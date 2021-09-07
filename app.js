@@ -20,6 +20,8 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+app.get('/', (req, res) => res.send('Hello World'));
+
 
 //Routes
 app.use('/api/v1/plant-type', plantTypesRouter);
