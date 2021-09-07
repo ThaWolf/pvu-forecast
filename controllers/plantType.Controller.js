@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const PlantType = require('../models/plantType');
+const PlantType = require('../models/PlantType');
 
 
 const getPlantTypes = async (req, res) => {
