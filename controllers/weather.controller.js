@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const moment = require('moment');
-const Weather = require('../models/weather');
+const Weather = require('../models/Weather');
 const WeatherHistory = require('../models/WeatherHistory');
-const PlantType = require('../models/plantType')
+const PlantType = require('../models/PlantType')
 
 
 const getWeathers = async (req, res) => {

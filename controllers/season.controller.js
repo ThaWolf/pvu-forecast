@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Season = require('../models/season');
+const Season = require('../models/Season');
 
 
 const getSeasons = async (req, res) => {

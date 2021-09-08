@@ -9,7 +9,7 @@ const {
     deleteWeather,
     addDailyWeather,
     getToday
-} = require('../controllers/Weather.controller')
+} = require('../controllers/weather.controller')
 
 weathersRouter.get('/', getWeathers);
 weathersRouter.get('/:weatherId', getWeather);
