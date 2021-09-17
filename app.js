@@ -6,6 +6,9 @@ const { plantTypesRouter } = require('./routes/plantTypesRouter');
 const { weathersRouter } = require('./routes/weathersRouter');
 const { seasonsRouter } = require('./routes/seasonsRouter');
 const { predictionRouter } = require('./routes/predictionRouter');
+const cron = require("node-cron");
+const { changeSeason } = require('./controllers/season.controller');
+const { changeForecastSeason } = require('./controllers/season.controller');
 require('dotenv/config');
 
 mongoose.Promise = global.Promise;
@@ -34,6 +37,10 @@ app.use('/api/v1/prediction', predictionRouter);
 app.listen(app.get('port'), () => {
     console.log(`Server started on port ${app.get('port')}`);
 });
+
+//tasks
+changeSeason();
+changeForecastSeason();
 
 
 

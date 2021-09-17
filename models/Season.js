@@ -4,7 +4,8 @@ const Schema = mongoose.Schema
 const SeasonSchema = new Schema({
     name: { type: String },
     weathers: { type: [mongoose.Schema.Types.ObjectId], ref: 'weather' },
-    isCurrent: { type: Boolean }
+    isCurrent: { type: Boolean },
+    isForecastCurrent: { type: Boolean },
 },
     {
         timestamps: true
