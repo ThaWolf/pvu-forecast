@@ -14,7 +14,7 @@ const possibleWeathers = async (req, res) => {
         lockedWeathers.forEach((weather) => {
             banned.push(weather.weather)
         })
-        const findPossibleWeathers = await Season.find({ isCurrent: true }, { '_id': 0, 'weathers': 1 }).populate({
+        const findPossibleWeathers = await Season.find({ isForecastCurrent: true }, { '_id': 0, 'weathers': 1 }).populate({
             path: 'weathers',
             match: { _id: { $nin: banned } },
             select: { '_id': 1 },
@@ -66,7 +66,7 @@ const getPrediction = async (req, res) => {
     lockedWeathers.forEach((weather) => {
         banned.push(weather.weather)
     })
-    const findPossibleWeathers = await Season.find({ isCurrent: true }, { '_id': 0, 'weathers': 1 }).populate({
+    const findPossibleWeathers = await Season.find({ isForecastCurrent: true }, { '_id': 0, 'weathers': 1 }).populate({
         path: 'weathers',
         match: { _id: { $nin: banned } },
         select: { '_id': 1 },
