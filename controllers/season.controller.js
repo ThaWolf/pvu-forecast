@@ -6,7 +6,7 @@ const getSeasons = async (req, res) => {
     res.status(200).send({ message: 'Success', body: req.body })
 }
 
-const changeSeason = async (req, res) => {
+const changeSeasonAPI = async (req, res) => {
     try {
         let lastSeason = await Season.findOneAndUpdate({ isCurrent: true }, { isCurrent: false });
         let currentSeason = {};
@@ -33,7 +33,28 @@ const changeSeason = async (req, res) => {
     }
 }
 
-const changeForecastSeason = async (req, res) => {
+const changeSeason = async () => {
+    let lastSeason = await Season.findOneAndUpdate({ isCurrent: true }, { isCurrent: false });
+    let currentSeason = {};
+    switch (lastSeason.name) {
+        case "Spring":
+            currentSeason = await Season.findOneAndUpdate({ 'name': "Summer" }, { isCurrent: true });
+            break;
+        case "Summer":
+            currentSeason = await Season.findOneAndUpdate({ 'name': "Autumn" }, { isCurrent: true });
+            break;
+        case "Autumn":
+            currentSeason = await Season.findOneAndUpdate({ 'name': "Winter" }, { isCurrent: true });
+            break;
+        case "Winter":
+            currentSeason = await Season.findOneAndUpdate({ 'name': "Spring" }, { isCurrent: true });
+            break;
+        default:
+            break;
+    }
+}
+
+const changeForecastSeasonAPI = async (req, res) => {
     try {
         let lastSeason = await Season.findOneAndUpdate({ isForecastCurrent: true }, { isForecastCurrent: false });
         let currentSeason = {};
@@ -57,6 +78,27 @@ const changeForecastSeason = async (req, res) => {
     }
     catch (ex) {
         res.status(400).send({ message: ex.message, body: req.body })
+    }
+}
+
+const changeForecastSeason = async () => {
+    let lastSeason = await Season.findOneAndUpdate({ isForecastCurrent: true }, { isForecastCurrent: false });
+    let currentSeason = {};
+    switch (lastSeason.name) {
+        case "Spring":
+            currentSeason = await Season.findOneAndUpdate({ 'name': "Summer" }, { isForecastCurrent: true });
+            break;
+        case "Summer":
+            currentSeason = await Season.findOneAndUpdate({ 'name': "Autumn" }, { isForecastCurrent: true });
+            break;
+        case "Autumn":
+            currentSeason = await Season.findOneAndUpdate({ 'name': "Winter" }, { isForecastCurrent: true });
+            break;
+        case "Winter":
+            currentSeason = await Season.findOneAndUpdate({ 'name': "Spring" }, { isForecastCurrent: true });
+            break;
+        default:
+            break;
     }
 }
 
@@ -90,6 +132,8 @@ module.exports = {
     getSeason,
     updateSeason,
     deleteSeason,
+    changeSeasonAPI,
+    changeForecastSeasonAPI,
     changeSeason,
     changeForecastSeason
 }

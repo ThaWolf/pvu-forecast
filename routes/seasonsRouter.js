@@ -7,7 +7,8 @@ const {
     getSeason,
     updateSeason,
     deleteSeason,
-    changeSeason
+    changeSeasonAPI,
+    changeForecastSeasonAPI
 } = require('../controllers/season.controller')
 
 seasonsRouter.get('/', getSeasons);
@@ -15,7 +16,8 @@ seasonsRouter.get('/:seasonId', getSeason);
 seasonsRouter.put('/edit/:seasonId', updateSeason);
 seasonsRouter.post('/add', createSeason);
 seasonsRouter.delete('/:seasonId', deleteSeason);
-seasonsRouter.post('/change', changeSeason)
+seasonsRouter.post('/change', changeSeasonAPI);
+seasonsRouter.post('/changeForecast', changeForecastSeasonAPI)
 
 
 module.exports = {
