@@ -39,8 +39,13 @@ app.listen(app.get('port'), () => {
 });
 
 //tasks
-changeSeason();
-changeForecastSeason();
+cron.schedule("0 0 * * SUN", () => {
+    changeSeason();
+});
+
+cron.schedule("0 0 * * SAT", () => {
+    changeForecastSeason();
+});
 
 
 
